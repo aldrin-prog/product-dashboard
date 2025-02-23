@@ -16,3 +16,6 @@ $routes->get('/profile','UsersController::index',['as'=>'profile']);
 // POST Request
 $routes->post("/register",'UsersController::store',['as'=>'register']);
 $routes->post("/login","AuthController::sign_in",['as'=>'login']);
+$routes->post('/products',"ProductsController::store",['as'=>'products']);
+$routes->post('/products/update/(:num)','ProductsController::update/$1');
+$routes->post('/products/delete/(:num)','ProductsController::destroy/$1');

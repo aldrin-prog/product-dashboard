@@ -22,21 +22,43 @@
                 </tr>
             </thead>
             <tbody>
+<?php foreach($products as $product): ?>
                 <tr>
-                    <td>1</td>
-                    <td>Cap</td>
-                    <td>100</td>
-                    <td>90</td>
+                    <td><?=$product['id']?></td>
+                    <td>
+                        <a href="/products/show/<?=$product['id']?>"><?=$product['name']?></a>
+                    </td>
+                    <td><?=$product['quantity']?></td>
+                    <td><?=$product['sold']?></td>
                     <td>
                         <div class="d-flex gap-5">
-                            <a href="">edit</a>
-                            <a href="">remove</a>
+                            <a href="/products/edit/<?=$product["id"]?>">edit</a>
+                            <form id="delete_form" action="/products/delete/<?=$product["id"]?>" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <a  class="delete_product text-primary cursor-pointer">delete</a>
+                            </form>
+                            <!-- <a href="/">remove</a> -->
                         </div>
                     </td>
                 </tr>
+<?php endforeach ?>
             </tbody>
         </table>
+        <?=$pager->links()?>
     </div>
     
 </div>
+
+<?php $this->endSection();?>
+<?php $this->section("script");?>
+<script>
+    $(document).ready(function(){
+        $('a.delete_product').on("click",function(){
+            const is_confirm=confirm("Are you sure?");
+            if(is_confirm){
+                $(this).closest('form').submit();
+            }
+        })
+    })
+</script>
 <?php $this->endSection();?>

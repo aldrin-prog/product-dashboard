@@ -12,10 +12,11 @@
         </div>
         <div class="row mt-5">
             <div class="col col-lg-4">
-                <form action="<?=route_to()?>" method="post">
+                <form action="<?=route_to("products")?>" method="post">
                     <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input type="text" value="T-Shirt" required name="name" class="form-control border border-2 border-dark">
+                        <span><?=validation_show_error("name")?></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
@@ -27,11 +28,13 @@
                     <div class="mb-3">
                         <label class="form-label">Price</label>
                         <input type="text" value="99.99" required name="price" class="form-control border border-2 border-dark">
+                        <span><?=validation_show_error("price")?></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Inventory Count</label>
-                        <input type="number" required name="inventory_count" min="1" value="1" max="100"
+                        <input type="number" required name="quantity" min="1" value="1"
                             class="form-control border border-2 border-dark w-25">
+                        <span><?=validation_show_error("quantity")?></span>
                     </div>
                     <button type="submit" class="d-block w-max ms-auto btn btn-success border border-2 border-dark">Create</button>
                 </form>

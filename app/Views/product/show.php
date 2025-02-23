@@ -4,13 +4,13 @@
     <?=view('partials/_nav_user')?>
 <?php $this->endSection();?>
 <?php $this->section("content");?>
-<h2 class="mb-3">(Product Name) (product_price)</h2>
+<h2 class="mb-3"><?=$product["name"]?> P<?=$product['price']?></h2>
 <div class="d-flex mt-4  flex-column gap-2">
-    <p>Added since: December 21 2021</p>
-    <p>Product ID: #2</p>
-    <p>Description: Legit,comfortable V88 Tshirt available in any size</p>
-    <p>Total sold: 10</p>
-    <p>Number of available stocks: 120</p>
+    <p>Added since: <?= date_format(date_create($product['created_at']),'F d Y') ?></p>
+    <p>Product ID: #<?= $product['id']?></p>
+    <p>Description: <?= $product['description']?></p>
+    <p>Total sold: <?= $product['sold']?></p>
+    <p>Number of available stocks: <?=$product['quantity']?></p>
 </div>
 <div class=" mt-4 ">
     <h4>Leave a Review</h4>
